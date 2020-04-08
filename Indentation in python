@@ -1,0 +1,104 @@
+'''
+
+How indentation works (by Utsav Singh)
+--------------------------------
+
+'''
+
+# A free line of code always begins on the left.
+
+print('Hello') # This is correct.
+ print('World') # This is wrong.
+
+# Code in a block must be indented.
+
+# After a block headline (ending with a colon), there has to follow at least one indented line of code.
+
+if 1+1 == 2:
+print('Whoops') # Wrong.
+
+if 1+1 == 2:
+    print('All in order') # That's the way!
+print('This doesn\'t belong to the block anymore!')    
+
+# Every line in a block must be in alignment with the others.
+
+while True:
+    print(1)
+    print(2)
+   print(3) # mistake
+
+# How far you indent, doesn't matter - every block can have its own style.
+
+if x>y:
+        x += 1
+        y -= 1
+elif x<y:
+    y += 1
+    x -= 1
+else:
+      del x, y
+    
+# (Although you should probably stick to one style for readability.)
+
+# By the way: You can write a simple block without indenting at all, if you fit it into one line. 
+
+def f(x, y): return x+y
+
+# As you probably know, you can write multiple statements in one line using a semicolon. You can use this to cram a longer block into a oneliner.
+
+if 1+1 == 2: print('Everything'); print('still'); print('fine')
+
+# You have to decide for yourself, if or when you use these techniques but watch out: They can make your code harder to read.
+
+# Each block can contain another block. The headline has to be aligned with the other lines in the first block, then the code of the second block is indented one step further.
+
+for i in range(10): # First block starts.
+    some_list = []
+    for j in range(10): # Second block starts.
+        some_list.append(1)
+    print(*some_list) # Back in the first block now.
+
+# As soon as you drop out of a block's indention level (like in the last line), the block has ended.
+
+# When you leave a deeper block, you have to decide, where exactly you want to end up.
+
+if 1:
+    if 2:
+        print(1)
+print('In this case, we leave both blocks at once.')
+
+if 3:
+    if 4:
+        print('Watch out not to produce an error.')
+  print('This is not in alignment with any block!') 
+
+# You can not write blocks that contain other blocks in just one line. But a complexer structure can of course contain simple one-line blocks.
+
+while True:
+    if x: print(x)
+    else: print('x is False.')
+
+# Up to now, every line has been ... well, in one line. This isn't necessarily the case though. Sometimes lines of code become so long that you want to break them up over two lines.
+
+# First let us remember: If it's not the beginning of a line, Python doesn't mind where you put whitespace!
+
+print   (    'Howdy!'   ) # This looks strange, but works.
+
+# Now when a line gets too long, you can use a backslash to write on in the next line.
+
+if 1 and 2\
+       and 3 and 4: # This is still the headline!
+    print('Whatever') # The actual block starts here.
+      
+# You see that I've indented the second part of the headline quite randomly. This doesn't matter at all - you can indent how far you want or even not indent at all. 
+
+# And that's because it's really still the same line - only the beginning of a line has to follow indentation rules!
+
+# As soon as you use any set of brackets, you don't even need the backslash: While the closing bracket has not been written, Python will just assume that the line goes on.
+
+print(
+    'Although it clearly doesn\'t look like it'
+    'This whole structure is a single line of code!'
+) # Here's the end of the line - and also the end of the tutorial. ;-)
+
